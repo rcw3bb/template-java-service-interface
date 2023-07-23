@@ -4,7 +4,7 @@ import xyz.ronella.template.service.moduleB.ModuleBApp;
 import xyz.ronella.template.service.moduleE.ModuleEApp;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(final String ... args) {
         System.out.println("Running ModuleBApp:");
         ModuleBApp.main(args);
 
