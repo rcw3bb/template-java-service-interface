@@ -1,0 +1,8 @@
+rootProject.name = 'template-service-interface'
+
+include 'moduleA'
+include 'moduleB'
+include 'moduleC'
+include 'moduleD'
+include 'moduleE'
+
