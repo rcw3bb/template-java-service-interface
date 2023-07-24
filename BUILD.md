@@ -17,7 +17,7 @@ gradlew build
 Run the following command to test the application:
 
 ```
-gradlew run
+gradlew :run
 ```
 
 Expect to see something similar to the following output:
@@ -32,6 +32,3 @@ ServiceImplementation3 is doing something different.
 ServiceImplementation1 is the default implementation provided by moduleA.
 ServiceImplementation4 is doing something different.
 ```
-
-
-
