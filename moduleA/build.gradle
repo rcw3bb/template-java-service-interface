@@ -1,12 +1,18 @@
 plugins {
-    id 'java'
+    id 'java-library'
+    id 'org.javamodularity.moduleplugin' version '1.8.12'
 }
 
-group = 'org.example'
-version = '1.0-SNAPSHOT'
+group = 'xyz.ronella.template'
+version = '1.0.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 dependencies {

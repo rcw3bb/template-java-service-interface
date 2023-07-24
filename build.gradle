@@ -6,8 +6,8 @@ plugins {
     id 'org.beryx.jlink' version '2.25.0'
 }
 
-group = 'org.example'
-version = '1.0-SNAPSHOT'
+group = 'xyz.ronella.template'
+version = '1.0.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
