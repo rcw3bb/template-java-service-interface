@@ -1,12 +1,33 @@
+import java.nio.file.Paths
+
 plugins {
-    id 'java'
+    id 'application'
+    id 'org.javamodularity.moduleplugin' version '1.8.12'
+    id 'org.beryx.jlink' version '2.25.0'
 }
 
-group = 'org.example'
-version = '1.0-SNAPSHOT'
+group = 'xyz.ronella.template'
+version = '1.0.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+}
+
+application {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+
+    mainModule = moduleName
+    mainClass = 'xyz.ronella.template.service.moduleE.ModuleEApp'
+}
+
+jlink {
+    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+    launcher{
+        moduleName = application.mainModule
+        mainClass = application.mainClass
+    }
+    imageName = "${project.name}-${version}"
 }
 
 dependencies {
@@ -19,4 +40,16 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+task packWin(group: 'distribution', dependsOn: ['jlink']) {
+    doLast{
+        def projectName = "${project.name}-${version}"
+        def jlinkOutputDir = Paths.get(buildDir.absolutePath, projectName)
+        def outputFile =  Paths.get(buildDir.absolutePath, "pack", "${projectName}-win64.zip")
+
+        ant.zip(destfile: outputFile) {
+            fileset(dir: jlinkOutputDir)
+        }
+    }
 }
